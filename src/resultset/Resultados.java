@@ -29,21 +29,44 @@ public class Resultados {
     */
     
     public int [] arreglosetResultSetUno() throws SQLException{
-        String info = "";
-        
+        String info = "";//obtiene un array de toda los datos en string.        
         Estudiantes es = new Estudiantes();
         rs1 = es.getTabla();
-        int cont=0; 
+        int cont=0;//vale 19 
         while(rs1.next()){  
-              info=info+rs1.getInt(3)+" ";
-              //cont=rs1.getRow();
-              cont=cont+4;
+              info=info+rs1.getInt(3)+' ';
+              cont=rs1.getRow();             
         }
+        char[] stringToCharArray = info.toCharArray();
         int[] arr=new int[cont];
-        for(int i=0;i<info.length();i++){
-                 arr[i]=info.charAt(i);      
+        int js=0;
+        for (char output : stringToCharArray) {
+            System.out.print(output);
         }
-        for(int k=0;k<arr.length;k++){
+        for(int i=0;i<stringToCharArray.length;i++){
+            if(stringToCharArray[i]==' '){
+                System.out.print("No is Digit");
+                
+                
+                }else{
+                 js=Character.getNumericValue(stringToCharArray[i]);
+                 
+                }
+        }
+        for(int j=0;j<arr.length;j++){
+                     arr[j]= js;
+                }
+        /*
+        
+        for(int i=0;i<info.length();i++){
+                char a =info.charAt(i);
+                if(Character.isDigit(a)){
+                    arr[i]= a;
+                }else{
+                 System.out.print("No is Digit");
+                }
+        }*/
+       for(int k=0;k<arr.length;k++){
            System.out.println(arr[k]);  
         }
        
