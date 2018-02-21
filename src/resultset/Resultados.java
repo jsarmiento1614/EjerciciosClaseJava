@@ -37,39 +37,35 @@ public class Resultados {
               info=info+rs1.getInt(3)+' ';
               cont=rs1.getRow();             
         }
+        //int entero=Integer.parseInt(info);
         char[] stringToCharArray = info.toCharArray();
         int[] arr=new int[cont];
-        int js=0;
-        for (char output : stringToCharArray) {
-            System.out.print(output);
-        }
+        int cont2=0;
+        String concat="";
+        int j=0;
         for(int i=0;i<stringToCharArray.length;i++){
-            if(stringToCharArray[i]==' '){
-                System.out.print("No is Digit");
-                
-                
+            if(Character.isWhitespace(stringToCharArray[i])){
+            }else{
+                concat=concat+stringToCharArray[i];
+                if("10".equals(concat)){
+                   arr[j]=Integer.parseInt(concat);  
+                   cont2=0;
+                   concat="10";
+                }
+                cont2++;
+                if(cont2==2){
+                   arr[j]=Integer.parseInt(concat); 
+                   j++; 
+                   cont2=0;
+                   concat="";
                 }else{
-                 js=Character.getNumericValue(stringToCharArray[i]);
-                 
-                }
+           
+                }   
+            }
         }
-        for(int j=0;j<arr.length;j++){
-                     arr[j]= js;
-                }
-        /*
-        
-        for(int i=0;i<info.length();i++){
-                char a =info.charAt(i);
-                if(Character.isDigit(a)){
-                    arr[i]= a;
-                }else{
-                 System.out.print("No is Digit");
-                }
-        }*/
-       for(int k=0;k<arr.length;k++){
-           System.out.println(arr[k]);  
+       for (int output2 : arr) {
+            System.out.print(output2 +",");
         }
-       
         return arr;
     }
     /*
@@ -85,22 +81,45 @@ public class Resultados {
     */
     //falto terminar.....
     public int [] getAlumnosquepasaron() throws SQLException{
+        String info = "";//obtiene un array de toda los datos en string.        
         Estudiantes es = new Estudiantes();
         rs1 = es.getTabla();
-        String info = "";
-        int cont=0; 
+        int cont=0;//vale 19 
         while(rs1.next()){  
-              info=rs1.getInt(3)+" ";
-              cont=cont+4;
+              info=info+rs1.getInt(3)+' ';
+              cont=rs1.getRow();             
         }
+        //int entero=Integer.parseInt(info);
+        char[] stringToCharArray = info.toCharArray();
         int[] arr=new int[cont];
-        for(int i=0;i<info.length();i++){
-                 arr[i]=info.charAt(i);      
+        int cont2=0;
+        String concat="";
+        int j=0;
+        for(int i=0;i<stringToCharArray.length;i++){
+            if(Character.isWhitespace(stringToCharArray[i])){
+            }else{
+                concat=concat+stringToCharArray[i];
+                if("10".equals(concat)){
+                   arr[j]=Integer.parseInt(concat);  
+                   cont2=0;
+                   concat="10";
+                }
+                cont2++;
+                if(cont2==2){
+                   arr[j]=Integer.parseInt(concat); 
+                   j++; 
+                   cont2=0;
+                   concat="";
+                }else{
+           
+                }   
+            }
         }
-        for(int k=0;k<arr.length;k++){
-           System.out.println(arr[k]);  
+       for (int k=0;k<arr.length;k++) {
+            if(arr[k]>=65){
+               System.out.print(arr[k] +",");  
+            }
         }
-       
         return arr;
     }
     

@@ -63,6 +63,8 @@ Resultados callResultados=new Resultados();
         //ingreso de datos a funcion esPrimo.
         //int year=997;
         callResultados.arreglosetResultSetUno();
-       // callResultados.ResultSetToArray();
+        System.out.println("\n");
+        System.out.println("***Alumnos que pasaron***");
+        callResultados.getAlumnosquepasaron();
     }
 }
